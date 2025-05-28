@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>카운터 시스템</title>
+  <title>Build Count System</title>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -82,8 +82,8 @@
 </head>
 <body>
 
+  <h1>Renault Build Count System</h1>
   <div id="today-date"></div>
-  <h1>카운터 시스템</h1>
 
   <div class="counter-wrapper">
     <div class="counter-box">
@@ -133,53 +133,78 @@
         <button onclick="resetCount('alliance_u_release__official')">초기화</button>
       </div>
     </div>
+
+    <!-- Branch 추가가 된다면 아래 branch name 변경하면 됨
+    <div class="counter-box">
+      <h2>alliance_u_release (Daily): <span id="count-alliance_u_release__daily">0</span></h2>
+      <div class="buttons">
+        <button onclick="updateCount('alliance_u_release__official', 1)">+1</button>
+        <button onclick="updateCount('alliance_u_release__official', -1)">-1</button>
+        <button onclick="resetCount('alliance_u_release__official')">초기화</button>
+      </div>
+      <hr style="margin: 16px 0;" />
+      <h2>alliance_u_release (Official): <span id="count-alliance_u_release__official">0</span></h2>
+      <div class="buttons">
+        <button onclick="updateCount('alliance_u_release__official', 1)">+1</button>
+        <button onclick="updateCount('alliance_u_release__official', -1)">-1</button>
+        <button onclick="resetCount('alliance_u_release__official')">초기화</button>
+      </div>
+    </div>
+    -->
   </div>
 
   <div class="reset-buttons">
     <button onclick="resetAll()">모두 초기화 (숫자만)</button>
     <button onclick="clearAll()">전체 초기화 (카운트+로그)</button>
   </div>
-
+<br>
   <div id="log-section">
-    <h3>📝 로그 기록</h3>
+    <h3>📝 로그 기록 📝</h3>
     <div id="log"></div>
   </div>
 
-  <script src="sss.js"></script>
+  <script src="base_info.js"></script>
 </body>
 </html>
-  <script src="sss.js"></script>
-</body>
 
-  <div id="warning">
-    <h3>주의 할 점</h3>
-    <li>
-      <b>브라우저 캐시/쿠키 데이터 삭제 시</b><br>
-      특히 “사이트 데이터 삭제” 옵션에서 localStorage도 포함될 수 있음    
-    </li>
-    <li>
-      <b>브라우저 캐시/쿠키 데이터 삭제 시</b><br>
-      특히 “사이트 데이터 삭제” 옵션에서 localStorage도 포함될 수 있음.
-    </li>
-    <li>
-      <b>브라우저 설정에서 ‘사이트 데이터 초기화’ 실행</b><br>
-      사이트별 저장 데이터(쿠키, localStorage 등) 삭제됨.
-    </li>
-    <li>
-      <b>전체 브라우저 데이터 삭제</b><br>
-      캐시, 쿠키, localStorage 전부 깨끗이 삭제됨.
-    </li>
-    <li>
-      <b>익명(시크릿) 모드 사용 후 종료</b><br>
-      세션 종료되면 저장한 데이터가 모두 날아감.
-    </li>
-    <li>
-      <b>브라우저 저장 공간 부족</b><br>
-      저장 용량 한도를 초과하면 오래된 데이터부터 삭제될 수 있음. (특히 모바일 브라우저)
-    </li>
-    <li>
-      <b>브라우저 버그나 강제 종료</b><br>
-      극히 드문 경우지만, 때때로 데이터 손실 발생 가능.
-    </li>
-  </div>
-</html>
+<br><br>
+<div id="information">
+  <h3>✨ 정보 ✨</h3>
+
+  <li>
+    해당 localStorage는 F12 / 마우스 우측 > 검사 를 켠 후 .. 애플리케이션-> 저장용량 -> 로컬 스토리지 값에서 확인 할 수 있습니다.
+  </li>
+</div>
+<hr style="margin: 16px 0;" />
+
+<div id="warning">
+  <h3>💥 주의 할 점 💥</h3>
+  <li>
+    <b>브라우저 캐시/쿠키 데이터 삭제 시</b><br>
+    특히 “사이트 데이터 삭제” 옵션에서 localStorage도 포함될 수 있음    
+  </li>
+  <li>
+    <b>브라우저 캐시/쿠키 데이터 삭제 시</b><br>
+    특히 “사이트 데이터 삭제” 옵션에서 localStorage도 포함될 수 있음.
+  </li>
+  <li>
+    <b>브라우저 설정에서 ‘사이트 데이터 초기화’ 실행</b><br>
+    사이트별 저장 데이터(쿠키, localStorage 등) 삭제됨.
+  </li>
+  <li>
+    <b>전체 브라우저 데이터 삭제</b><br>
+    캐시, 쿠키, localStorage 전부 깨끗이 삭제됨.
+  </li>
+  <li>
+    <b>익명(시크릿) 모드 사용 후 종료</b><br>
+    세션 종료되면 저장한 데이터가 모두 날아감.
+  </li>
+  <li>
+    <b>브라우저 저장 공간 부족</b><br>
+    저장 용량 한도를 초과하면 오래된 데이터부터 삭제될 수 있음. (특히 모바일 브라우저)
+  </li>
+  <li>
+    <b>브라우저 버그나 강제 종료</b><br>
+    극히 드문 경우지만, 때때로 데이터 손실 발생 가능.
+  </li>
+</div>

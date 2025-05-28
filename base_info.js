@@ -5,6 +5,7 @@ const keys = [
     'myf4.2_u_release__official',
     'alliance_u_release__daily',
     'alliance_u_release__official'
+    //'추가 시 브랜치 명 넣기'
   ];
   
   // 한글 날짜 포맷
@@ -14,7 +15,7 @@ const keys = [
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     const weekday = days[date.getDay()];
-    return `${year}년 ${month}월 ${day}일 (${weekday})`;
+    return `🕗 ${year}년 ${month}월 ${day}일 (${weekday}) 🕔`;
   }
   
   function getTimestamp() {
