@@ -9,6 +9,7 @@ const keys = [
   ];
   
   // 한글 날짜 포맷
+
   function formatDateKorean(date) {
     const days = ['일', '월', '화', '수', '목', '금', '토'];
     const year = date.getFullYear();
@@ -17,7 +18,7 @@ const keys = [
     const weekday = days[date.getDay()];
     return `🕗 ${year}년 ${month}월 ${day}일 (${weekday}) 🕔`;
   }
-  
+
   function getTimestamp() {
     const now = new Date();
     const y = now.getFullYear();
@@ -105,7 +106,8 @@ const keys = [
   }
   
   window.onload = function () {
-    document.getElementById('today-date').innerText = formatDateKorean(new Date());
+    //document.getElementById('today-date').innerText = formatDateKorean(new Date());
+    updateDateTime();
     loadCounts();
     displayLogs();
   };

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Build Count System</title>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -77,6 +78,13 @@
       line-height: 1.5;
       white-space: pre-wrap;
       color: #374151;
+    }
+    .chart-container {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
     }
   </style>
 </head>
@@ -163,7 +171,84 @@
     <div id="log"></div>
   </div>
 
+  <div class="chart-container">
+    <h3>📈 날짜별 빌드 카운트 그래프 📈</h3>
+    <canvas id="buildChart"></canvas>
+  </div>
+
   <script src="base_info.js"></script>
+
+  <script>
+    const savedDailyCounts = JSON.parse(localStorage.getItem('dailyCounts') || '{}');
+
+    function updateDateTime() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+      });
+  
+      const timeStr = now.toLocaleTimeString('ko-KR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+  
+      document.getElementById('today-date').textContent = `⏰ ${dateStr} / ${timeStr} ⏰`;
+    }
+    
+    // 1초마다 갱신
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // 첫 로딩 시 한 번 실행
+    
+    function updateDailyHistory(key, count) {
+      const today = new Date();
+      const dateKey = `${today.getFullYear()}${('0' + (today.getMonth() + 1)).slice(-2)}${('0' + today.getDate()).slice(-2)}`;
+      if (!savedDailyCounts[dateKey]) savedDailyCounts[dateKey] = {};
+      savedDailyCounts[dateKey][key] = count;
+      localStorage.setItem('dailyCounts', JSON.stringify(savedDailyCounts));
+    }
+
+    function drawChartForKey(key) {
+      const ctx = document.getElementById('buildChart').getContext('2d');
+      const labels = Object.keys(savedDailyCounts).sort();
+      const data = labels.map(date => savedDailyCounts[date][key] || 0);
+
+      if (window.buildChartInstance) {
+        window.buildChartInstance.destroy();
+      }
+
+      window.buildChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: key,
+            data,
+            backgroundColor: 'rgba(59, 130, 246, 0.2)',
+            borderColor: '#3b82f6',
+            borderWidth: 2,
+            tension: 0.3
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                precision: 0
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 버튼에 이벤트 추가 필요 (예: 카운터 옆에 그래프 버튼 추가 시)
+    // 예시: <button onclick="drawChartForKey('myf4.2_release__daily')">📊</button>
+  </script>
 </body>
 </html>
 
