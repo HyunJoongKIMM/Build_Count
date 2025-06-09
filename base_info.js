@@ -4,7 +4,9 @@ const keys = [
     'myf4.2_u_release__daily',
     'myf4.2_u_release__official',
     'alliance_u_release__daily',
-    'alliance_u_release__official'
+    'alliance_u_release__official',
+    'event_branch__daily',
+    'event_branch__official'
     //'추가 시 브랜치 명 넣기'
   ];
   

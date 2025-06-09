@@ -142,6 +142,23 @@
       </div>
     </div>
 
+    <div class="counter-box">
+      <h2>Event Branch (Daily): <span id="count-event_branch__daily">0</span></h2>
+      <div class="buttons">
+        <button onclick="updateCount('event_branch__daily', 1)">+1</button>
+        <button onclick="updateCount('event_branch__daily', -1)">-1</button>
+        <button onclick="resetCount('event_branch__daily')">초기화</button>
+      </div>
+      <hr style="margin: 16px 0;" />
+      <h2>Event Branch (Official): <span id="count-event_branch__official">0</span></h2>
+      <div class="buttons">
+        <button onclick="updateCount('event_branch__official', 1)">+1</button>
+        <button onclick="updateCount('event_branch__official', -1)">-1</button>
+        <button onclick="resetCount('event_branch__official')">초기화</button>
+      </div>
+    </div>
+
+  
     <!-- Branch 추가가 된다면 아래 branch name 변경하면 됨
     <div class="counter-box">
       <h2>alliance_u_release (Daily): <span id="count-alliance_u_release__daily">0</span></h2>
